@@ -4,6 +4,10 @@
 #include "math/matrices/mat4.h"
 #include <spdlog/spdlog.h>
 
+#include "graphics/buffers/buffer.h"
+#include "graphics/buffers/indexBuffer.h"
+#include "graphics/buffers/vertexArray.h"
+
 int main() {
 
     using namespace blitz;
@@ -16,14 +20,7 @@ int main() {
     // Print OpenGL version
     std::cout << glGetString(GL_VERSION) << std::endl;
 
-   
-    // set up vertex data (and buffer(s)) and configure vertex attributes
-    // ------------------------------------------------------------------
-    /*float vertices[] = {
-        -0.5f, -0.5f, 0.0f, // left  
-         0.5f, -0.5f, 0.0f, // right 
-         0.0f,  0.5f, 0.0f  // top   
-    }; */
+#if 0
 
     float vertices[] = {
         4.0f, 3.0f, 0.0f, // left  
@@ -49,6 +46,26 @@ int main() {
     // You can unbind the VAO afterwards so other VAO calls won't accidentally modify this VAO, but this rarely happens. Modifying other
     // VAOs requires a call to glBindVertexArray anyways so we generally don't unbind VAOs (nor VBOs) when it's not directly necessary.
     glBindVertexArray(0); 
+#else
+    GLfloat vertices[] = {
+        0, 0, 0, 
+        0, 3, 0, 
+        8, 3, 0,
+        8, 0, 0
+    }; 
+
+    GLushort indices[] = {
+        0, 1, 2,
+        2, 3, 0
+    };
+
+    VertexArray vao;
+    Buffer* vbo = new Buffer(vertices, 4 * 3, 3);
+    IndexBuffer ibo(indices, 6);
+
+    vao.addBuffer(vbo, 0);
+
+#endif
 
     //Initi and enable shaders
     Shader shader("../src/shaders/basic.vert","../src/shaders/basic.frag");
@@ -56,42 +73,41 @@ int main() {
 
     Mat4 ortho = Mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
 
-    //vec4(1.0f, 0.5f, 0.2f, 1.0f)
-
     shader.setUniformMat4("pr_matrix", ortho);
     shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(3,3,0)));
+    shader.setUniform4f("colour", Vec4(1.0f, 0.5f, 0.2f, 1.0f));
 
     while (!window.closed()) {
         window.clear();
 
-        float timeValue = glfwGetTime();
-        float greenValue = sin(timeValue) / 2.0f + 0.5f;
-        shader.setUniform4f("colour", Vec4(1.0f, greenValue, 0.2f, 1.0f));
-
-        if (window.isKeyPressed(GLFW_KEY_A)) {
-            spdlog::info("Welcome to spdlog!");
-            std::cout << "HELLO THERE" << std::endl;
-        }
-        
-        if (window.isMouseBottonPressed(GLFW_MOUSE_BUTTON_1)) {
-            std::cout << "BASIC" << std::endl;
-        }
-
         double x,y;
         window.getMousePosition(x, y);
         shader.setUniform2f("lightPos", Vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
-
-        //glUseProgram(shaderProgram);
+#if 0
         // Render the triangle
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
+#else
+        vao.bind();
+        ibo.bind();
+
+        shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(0,0,0)));
+        glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+        shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(4,3,0)));
+        glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+
+        vao.unbind();
+        ibo.unbind();
+#endif
 
         window.update();
     }
 
+#if 0
     // Cleanup
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+#endif
 
     return 0;
 }
