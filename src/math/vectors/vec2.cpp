@@ -52,7 +52,7 @@ namespace blitz {
         return *this;
     }
 
-    Vec2& Vec2::scale(const float& scalar) {
+    Vec2& Vec2::multiply(const float& scalar) {
         x *= scalar;
         y *= scalar;
 
@@ -72,11 +72,11 @@ namespace blitz {
     }
 
     Vec2 operator*(Vec2 left, const float& scalar) {
-        return left.scale(scalar);
+        return left.multiply(scalar);
     }
 
     Vec2 operator*(const float& scalar, Vec2 right) {
-        return right.scale(scalar);
+        return right.multiply(scalar);
     }
 
     Vec2 operator/(Vec2 left, const Vec2& right) {
@@ -109,6 +109,20 @@ namespace blitz {
 
     bool Vec2::operator!=(const Vec2& vec) {
         return !(*this == vec);
+    }
+
+    float Vec2::magnitude() {
+        return std::sqrt(x * x + y * y);
+    }
+
+    Vec2& Vec2::normalize() {
+        float mag = magnitude();
+        multiply(1 / mag);
+        return *this;
+    }
+
+    float Vec2::dot(const Vec2& vec) {
+        return x * vec.x + y * vec.y;
     }
 
     std::ostream& operator<<(std::ostream& stream, const Vec2& vec) {

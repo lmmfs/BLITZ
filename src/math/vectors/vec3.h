@@ -37,13 +37,14 @@ namespace blitz {
         
         friend std::ostream& operator<<(std::ostream& stream, const Vec3& vec);
 
-        //void normalize();
-
+        float magnitude();
+        Vec3& normalize();
+        float dot(const Vec3& vec);
         Vec3& add(const Vec3& vec);
         Vec3& subtract(const Vec3& vec);
         Vec3& multiply(const Vec3& vec);
+        Vec3& multiply(const float& scalar);
         Vec3& divide(const Vec3& vec);
-        Vec3& scale(const float& scalar);
     };
 }
 

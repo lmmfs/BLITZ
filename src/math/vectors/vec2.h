@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <cmath>
 
 namespace blitz {
     struct Vec2 {
@@ -33,13 +34,14 @@ namespace blitz {
         
         friend std::ostream& operator<<(std::ostream& stream, const Vec2& vec);
 
-        //void normalize();
-
+        float magnitude();
+        Vec2& normalize();
+        float dot(const Vec2& vec);
         Vec2& add(const Vec2& vec);
         Vec2& subtract(const Vec2& vec);
         Vec2& multiply(const Vec2& vec);
+        Vec2& multiply(const float& scalar);
         Vec2& divide(const Vec2& vec);
-        Vec2& scale(const float& scalar);
     };
 }
 
