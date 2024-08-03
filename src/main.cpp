@@ -8,7 +8,7 @@ int main() {
 
     using namespace blitz;
 
-    Window window("Blitz", 800, 600);
+    Window window("Blitz", 960, 540);
 
     // Set the clear color
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
@@ -61,11 +61,6 @@ int main() {
     shader.setUniformMat4("pr_matrix", ortho);
     shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(3,3,0)));
 
-    shader.setUniform2f("lightPos", Vec2(8.0f, 4.5f));
-    
-
-    //colour lightPos
-
     while (!window.closed()) {
         window.clear();
 
@@ -81,6 +76,10 @@ int main() {
         if (window.isMouseBottonPressed(GLFW_MOUSE_BUTTON_1)) {
             std::cout << "BASIC" << std::endl;
         }
+
+        double x,y;
+        window.getMousePosition(x, y);
+        shader.setUniform2f("lightPos", Vec2((float)(x * 16.0f / 960.0f), (float)(9.0f - y * 9.0f / 540.0f)));
 
         //glUseProgram(shaderProgram);
         // Render the triangle

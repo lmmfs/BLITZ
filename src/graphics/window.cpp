@@ -88,6 +88,11 @@ namespace blitz {
         }
         return m_Keys[keyCode];
     }
+
+    void Window::getMousePosition(double& x, double& y) {
+        x = mX;
+        y = mY;
+    }
     
     bool Window::isMouseBottonPressed(unsigned int button) const {
         if (button > MAX_BOTTONS) {

@@ -33,6 +33,7 @@ namespace blitz {
 
             bool isKeyPressed(unsigned int keyCode) const;
             bool isMouseBottonPressed(unsigned int keyCode) const; 
+            void getMousePosition(double& x, double& y);
 
         private:
             bool init();
