@@ -59,12 +59,28 @@ int main() {
         2, 3, 0
     };
 
-    VertexArray vao;
-    Buffer* vbo = new Buffer(vertices, 4 * 3, 3);
+    GLfloat colorsA[] = {
+        1, 1, 1, 1, 
+        1, 1, 1, 1, 
+        1, 1, 1, 1, 
+        1, 1, 1, 1 
+    }; 
+
+    GLfloat colorsB[] = {
+        1, 0.5f, 0.2f, 1, 
+        1, 0.5f, 0.2f, 1, 
+        1, 0.5f, 0.2f, 1, 
+        1, 0.5f, 0.2f, 1 
+    }; 
+
+    VertexArray sprite1, sprite2;
     IndexBuffer ibo(indices, 6);
 
-    vao.addBuffer(vbo, 0);
-
+    sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+    sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
+    
+    sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
+    sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
 #endif
 
     //Initi and enable shaders
@@ -88,16 +104,24 @@ int main() {
         glBindVertexArray(VAO);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 #else
-        vao.bind();
+        sprite1.bind();
         ibo.bind();
 
         shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(0,0,0)));
         glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
+
+        sprite1.unbind();
+        ibo.unbind();
+
+        sprite2.bind();
+        ibo.bind();
+
         shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(4,3,0)));
         glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 
-        vao.unbind();
+        sprite2.unbind();
         ibo.unbind();
+        
 #endif
 
         window.update();

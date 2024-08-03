@@ -5,9 +5,13 @@ out vec4 FragColor;
 uniform vec4 colour;
 uniform vec2 lightPos;
 
-in vec4 pos;
+in DATA {
+    vec4 pos;
+    vec4 color;
+} fs_in;
 
 void main() {
-    float intensity = 1.0 / length(pos.xy - lightPos);
-    FragColor = colour * intensity;
+    float intensity = 1.0 / length(fs_in.pos.xy - lightPos);
+    //FragColor = colour * intensity;
+    FragColor = fs_in.color * intensity;
 }

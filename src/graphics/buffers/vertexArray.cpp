@@ -16,8 +16,7 @@ namespace blitz {
         buffer->bind();
 
         glEnableVertexAttribArray(index);
-        glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        //glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glVertexAttribPointer(index, buffer->getComponentCount(), GL_FLOAT, GL_FALSE, 0, 0);
 
         buffer->unbind();
         unbind();
