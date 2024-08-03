@@ -62,12 +62,16 @@ int main() {
     shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(3,3,0)));
 
     shader.setUniform2f("lightPos", Vec2(8.0f, 4.5f));
-    shader.setUniform4f("colour", Vec4(1.0f, 0.5f, 0.2f, 1.0f));
+    
 
     //colour lightPos
 
     while (!window.closed()) {
         window.clear();
+
+        float timeValue = glfwGetTime();
+        float greenValue = sin(timeValue) / 2.0f + 0.5f;
+        shader.setUniform4f("colour", Vec4(1.0f, greenValue, 0.2f, 1.0f));
 
         if (window.isKeyPressed(GLFW_KEY_A)) {
             spdlog::info("Welcome to spdlog!");

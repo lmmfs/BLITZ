@@ -40,6 +40,7 @@ namespace blitz {
         float magnitude();
         Vec3& normalize();
         float dot(const Vec3& vec);
+        Vec3 cross(const Vec3& vec);
         Vec3& add(const Vec3& vec);
         Vec3& subtract(const Vec3& vec);
         Vec3& multiply(const Vec3& vec);

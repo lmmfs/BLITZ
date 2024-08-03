@@ -136,6 +136,10 @@ namespace blitz {
         return *this;
     }
 
+    Vec3 Vec3::cross(const Vec3& vec) {
+        return Vec3((y * vec.z) - (z * vec.y), (z * vec.x) - (x * vec.z), (x * vec.y) - (y * vec.x));
+    }
+
     float Vec3::dot(const Vec3& vec) {
         return x * vec.x + y * vec.y + z * vec.z;
     }
