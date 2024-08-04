@@ -1,4 +1,5 @@
 #include "window.h"
+#include "../logger/logger.h"
 
 
 namespace blitz {
@@ -33,10 +34,10 @@ namespace blitz {
 
     bool Window::init() {
         if (!glfwInit()) {
-            std::cout << "Failed to initialize GLFW" << std::endl;
+            BLITZ_LOG_ERROR("Failed to initialize GLFW");
             return false;
         } else {
-            std::cout << "Successfully initialized GLFW" << std::endl;
+            BLITZ_LOG_INFO("Successfully initialized GLFW");
         }
 
         // Set GLFW to use OpenGL 3.3 and core profile
@@ -61,7 +62,7 @@ namespace blitz {
 
         // Load GLAD
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            std::cout << "Failed to initialize GLAD" << std::endl;
+            BLITZ_LOG_ERROR("Failed to initialize GLAD");
             return false;
         }
 
@@ -75,7 +76,7 @@ namespace blitz {
     void Window::update() {
         GLenum error = glGetError();
         if (error != GL_NO_ERROR) {
-            std::cerr << "OPENGL ERROR:" << error << std::endl;
+            BLITZ_LOG_ERROR("OPENGL ERROR: {}", error);
         }
 
         glfwPollEvents();

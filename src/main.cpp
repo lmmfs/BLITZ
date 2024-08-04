@@ -2,7 +2,7 @@
 #include "graphics/shader.h"
 #include "math/math.h"
 #include "math/matrices/mat4.h"
-#include <spdlog/spdlog.h>
+#include "logger/logger.h"
 
 #include "graphics/buffers/buffer.h"
 #include "graphics/buffers/indexBuffer.h"
@@ -12,12 +12,16 @@ int main() {
 
     using namespace blitz;
 
+    Logger::init();
+
     Window window("Blitz", 960, 540);
 
     // Set the clear color
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
 
     // Print OpenGL version
+
+    //todo use logger here
     std::cout << glGetString(GL_VERSION) << std::endl;
 
 #if 0
