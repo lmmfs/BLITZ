@@ -7,6 +7,7 @@
 #include "graphics/buffers/buffer.h"
 #include "graphics/buffers/indexBuffer.h"
 #include "graphics/buffers/vertexArray.h"
+#include "graphics/texture.h"
 
 int main() {
 
@@ -53,9 +54,16 @@ int main() {
 #else
     GLfloat vertices[] = {
         0, 0, 0, 
-        0, 3, 0, 
-        8, 3, 0,
+        0, 8, 0, 
+        8, 8, 0,
         8, 0, 0
+    }; 
+
+    GLfloat texCoords[] = {
+        0, 0,  
+        1, 0,  
+        1, 1, 
+        0, 1 
     }; 
 
     GLushort indices[] = {
@@ -70,25 +78,20 @@ int main() {
         1, 1, 1, 1 
     }; 
 
-    GLfloat colorsB[] = {
-        1, 0.5f, 0.2f, 1, 
-        1, 0.5f, 0.2f, 1, 
-        1, 0.5f, 0.2f, 1, 
-        1, 0.5f, 0.2f, 1 
-    }; 
+    
 
-    VertexArray sprite1, sprite2;
+    VertexArray sprite1;
     IndexBuffer ibo(indices, 6);
 
     sprite1.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
     sprite1.addBuffer(new Buffer(colorsA, 4 * 4, 4), 1);
+    sprite1.addBuffer(new Buffer(texCoords, 2 * 4, 2), 2);
     
-    sprite2.addBuffer(new Buffer(vertices, 4 * 3, 3), 0);
-    sprite2.addBuffer(new Buffer(colorsB, 4 * 4, 4), 1);
+
 #endif
 
     //Initi and enable shaders
-    Shader shader("../src/shaders/basic.vert","../src/shaders/basic.frag");
+    Shader shader("../src/assets/shaders/basic.vert","../src/assets/shaders/basic.frag");
     shader.enable();
 
     Mat4 ortho = Mat4::orthographic(0.0f, 16.0f, 0.0f, 9.0f, -1.0f, 1.0f);
@@ -96,6 +99,8 @@ int main() {
     shader.setUniformMat4("pr_matrix", ortho);
     shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(3,3,0)));
     shader.setUniform4f("colour", Vec4(1.0f, 0.5f, 0.2f, 1.0f));
+
+    Texture texture("../src/assets/textures/teste.png");
 
     while (!window.closed()) {
         window.clear();
@@ -110,20 +115,12 @@ int main() {
 #else
         sprite1.bind();
         ibo.bind();
+        texture.Bind(1);
 
         shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(0,0,0)));
         glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
 
         sprite1.unbind();
-        ibo.unbind();
-
-        sprite2.bind();
-        ibo.bind();
-
-        shader.setUniformMat4("ml_matrix", Mat4::translate(Vec3(4,3,0)));
-        glDrawElements(GL_TRIANGLES, ibo.getCount(), GL_UNSIGNED_SHORT, 0);
-
-        sprite2.unbind();
         ibo.unbind();
         
 #endif
