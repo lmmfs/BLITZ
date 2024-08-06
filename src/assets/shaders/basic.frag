@@ -16,5 +16,5 @@ void main() {
     float intensity = 1.0 / length(fs_in.pos.xy - lightPos);
     //FragColor = colour * intensity;
     //FragColor = fs_in.color * intensity;
-    FragColor = texture(ourTexture, fs_in.texCoord) * intensity;
+    FragColor = texture(ourTexture, fs_in.texCoord); // * fs_in.color * intensity;
 }

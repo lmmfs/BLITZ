@@ -1,49 +1,49 @@
 #include "texture.h"
-#include <iostream>
-#include "../logger/logger.h"
 #define STB_IMAGE_IMPLEMENTATION
-#include "stb_image.h"
+#include "../utils/stb_image.h"
+#include "../logger/logger.h"
 
 namespace blitz {
+    Texture::Texture(const std::string& path) 
+        : m_Path(path) {
+           m_TextureID = load();
+    }
 
-	Texture::Texture() {
+	Texture::~Texture() {
+        glDeleteTextures(1, &m_TextureID);
+    }
 
-	}
+	void Texture::bind() const {
+        //glActiveTexture(GL_TEXTURE0 + 1);
+        glBindTexture(GL_TEXTURE_2D, m_TextureID);
+    }
 
-	Texture::Texture(const std::string fileName) {
-		glGenTextures(1, &m_texture_id);
-		glBindTexture(GL_TEXTURE_2D, m_texture_id);
-		
-		int width, height, nrChannels;
-		unsigned char* Imagedata = stbi_load(fileName.c_str(), &width, &height, &nrChannels, 4);
-		if(Imagedata == NULL)
-            BLITZ_LOG_ERROR("Failed to load texture: {}", fileName);
+	void Texture::unbind() const {
+        glBindTexture(GL_TEXTURE_2D, 0);
+    }
+
+    GLuint Texture::load() {
+        stbi_set_flip_vertically_on_load(true);
+        unsigned char* Imagedata = stbi_load(m_Path.c_str(), &m_Width, &m_Height, &m_NrChannels, 4);
+
+        if(Imagedata == NULL) 
+            BLITZ_LOG_ERROR("Failed to load texture: {}", m_Path);
+
+        GLuint result;
+        glGenTextures(1, &result);
+        glBindTexture(GL_TEXTURE_2D, result);
 
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Imagedata);
-		
-		stbi_image_free(Imagedata);
-	}
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_Width, m_Height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Imagedata);
+        glBindTexture(GL_TEXTURE_2D, 0);
 
-
-	Texture::~Texture() {
-		glDeleteTextures(1, &m_texture_id);
-	}
-
-	void Texture::Bind(unsigned int unit){
-		assert(unit >= 0 && unit <= 31);
-		glActiveTexture(GL_TEXTURE0 + unit);
-		glBindTexture(GL_TEXTURE_2D, m_texture_id);
-
-	}
-    
-	Texture* Texture::parseTexture(const std::string fileName)
-	{
-		Texture* t = new Texture(fileName);
-		return t;
-	}
+        stbi_image_free(Imagedata);
+        return result;
+        
+        
+    }
 }
