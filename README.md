@@ -2,6 +2,8 @@
 
 A 3d game engine for Linux using c++ and opengl
 
+![Logo](B-logo-512.png)
+
 
 ## Features
 
@@ -33,3 +35,16 @@ sudo apt-get install xorg-dev
 
 ![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
+## Roadmap
+
+- Engine - App Architecture 
+
+- Vector lerp and slerp
+
+- 3D mesh
+
+- Resource manager
+
+- Audio Engine
+
+- Physics engine
