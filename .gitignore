@@ -46,4 +46,4 @@ CMakeUserPresets.json
 
 build/
 .vscode/
-extras/
+extras-docs/
