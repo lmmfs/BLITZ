@@ -37,14 +37,14 @@ sudo apt-get install xorg-dev
 
 ## Roadmap
 
-- Engine - App Architecture 
+* [ ] Engine - App Architecture 
 
-- Vector lerp and slerp
+* [ ] Vector lerp and slerp
 
-- 3D mesh
+* [ ] 3D mesh
 
-- Resource manager
+* [ ] Resource manager
 
-- Audio Engine
+* [ ] Audio Engine
 
-- Physics engine
+* [ ] Physics engine
