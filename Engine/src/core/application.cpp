@@ -1,4 +1,5 @@
 #include "application.h"
+#include <iostream>
 
 namespace blitz {
     Application::Application() {
@@ -10,6 +11,7 @@ namespace blitz {
     }
 
     void Application::run() {
+        std::cout << "inside blitz" << std::endl;
         while (true)
         {
             /* code */

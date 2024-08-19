@@ -1,4 +1,4 @@
-#include "blitz.h"
+#include <blitz.h>
 
 
 class Sandbox : public blitz::Application
