@@ -23,6 +23,10 @@ add_subdirectory(vendor/glfw)
 # Add GLAD
 add_library(glad STATIC vendor/glad/src/glad.c)
 target_include_directories(glad PUBLIC vendor/glad/include)
+target_compile_options(glad PRIVATE -fPIC)
+
+# Ensure glad is compiled with -fPIC
+set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
