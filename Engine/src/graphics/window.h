@@ -24,6 +24,7 @@ namespace blitz {
             double mY;
 
         public:
+            Window();
             Window(const char *name, const int& width, const int& height);
             ~Window();
 

@@ -9,6 +9,9 @@ namespace blitz {
     void mouse_button_callback(GLFWwindow* window, int button, int action, int mods);
     void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
+    Window::Window() {
+        Window("Empty", 500, 500);
+    }
 
     Window::Window(const char *name, const int& width, const int& height) {
         m_Name = name;
