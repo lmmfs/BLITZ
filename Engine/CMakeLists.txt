@@ -2,24 +2,13 @@
 project(Engine)
 
 # Automatically include all .cpp files in the src directory
-file(GLOB_RECURSE ENGINE_SOURCE_FILES 
-    src/*.cpp 
-    vendor/spdlog/src/*.cpp
-    vendor/spdlog/include/*.h
-)
-
-# Exclude spdlog benchmark files
-file(GLOB_RECURSE EXCLUDED_FILES vendor/spdlog/bench/*.cpp)
-list(REMOVE_ITEM ENGINE_SOURCE_FILES ${EXCLUDED_FILES})
+file(GLOB_RECURSE ENGINE_SOURCE_FILES src/*.cpp)
 
 # Set the OpenGL preference to GLVND
 cmake_policy(SET CMP0072 NEW)
 
 # Add SPDLOG
 # Set options to disable spdlog benchmarks and tests
-#set(SPDLOG_BUILD_BENCH OFF CACHE BOOL "Build spdlog benchmarks" FORCE)
-#set(SPDLOG_BUILD_TESTS OFF CACHE BOOL "Build spdlog tests" FORCE)
-#set(SPDLOG_INSTALL OFF CACHE BOOL "Generate the install target" FORCE)
 add_subdirectory(vendor/spdlog)
 
 
