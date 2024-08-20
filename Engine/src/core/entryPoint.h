@@ -8,7 +8,12 @@ namespace blitz {
 }
 
 int main(int argc, char** argv) {
-    std::cout << "inside blitz 3" << std::endl;
+    blitz::Logger::init();
+    //BLITZ_LOG_INFO("inside blitz 3");
+    blitz::Logger::getCoreLogger()->info("inside blitz EP");
+    blitz::Logger::getClientLogger()->info("inside blitz EP");
+
+
     blitz::Application* app = blitz::createApplication();
     app->run();
     delete app;

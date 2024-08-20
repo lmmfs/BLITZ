@@ -1,5 +1,5 @@
 #include "shader.h"
-#include "../logger/logger.h"
+#include "../core/logger/logger.h"
 
 
 namespace blitz {
@@ -31,7 +31,7 @@ namespace blitz {
         glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &result);
         if (!result) {
             glGetShaderInfoLog(vertexShader, 512, NULL, infoLog);
-            BLITZ_LOG_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED {}", infoLog);
+            //BLITZ_LOG_ERROR("ERROR::SHADER::VERTEX::COMPILATION_FAILED {}", infoLog);
             glDeleteShader(vertexShader);
         }
         
@@ -41,7 +41,7 @@ namespace blitz {
         glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, &result);
         if (!result) {
             glGetShaderInfoLog(fragmentShader, 512, NULL, infoLog);
-            BLITZ_LOG_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED {}", infoLog);
+            //BLITZ_LOG_ERROR("ERROR::SHADER::FRAGMENT::COMPILATION_FAILED {}", infoLog);
             glDeleteShader(fragmentShader);
         }
 

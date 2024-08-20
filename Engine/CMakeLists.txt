@@ -10,6 +10,7 @@ cmake_policy(SET CMP0072 NEW)
 # Add SPDLOG
 # Set options to disable spdlog benchmarks and tests
 add_subdirectory(vendor/spdlog)
+target_compile_options(spdlog PRIVATE -fPIC)
 
 
 # Add GLFW
@@ -41,7 +42,7 @@ target_compile_definitions(Engine PRIVATE ENGINE_EXPORTS)
 
 # Link libraries
 #target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
-target_link_libraries(Engine glfw glad ${CMAKE_DL_LIBS})
+target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
 
 # Find OpenGL
 find_package(OpenGL REQUIRED)
