@@ -9,7 +9,6 @@ namespace blitz {
 
 int main(int argc, char** argv) {
     blitz::Logger::init();
-    //BLITZ_LOG_INFO("inside blitz 3");
     BLITZ_CORE_INFO("inside blitz EP");
     BLITZ_WARN("inside blitz EP");
 
