@@ -27,7 +27,7 @@ namespace blitz {
         unsigned char* Imagedata = stbi_load(m_Path.c_str(), &m_Width, &m_Height, &m_NrChannels, 4);
 
         if(Imagedata == NULL) 
-            BLITZ_LOG_ERROR("Failed to load texture: {}", m_Path);
+            BLITZ_CORE_INFO("Failed to load texture: {}", m_Path);
 
         GLuint result;
         glGenTextures(1, &result);

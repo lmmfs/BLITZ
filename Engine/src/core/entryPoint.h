@@ -10,8 +10,8 @@ namespace blitz {
 int main(int argc, char** argv) {
     blitz::Logger::init();
     //BLITZ_LOG_INFO("inside blitz 3");
-    blitz::Logger::getCoreLogger()->info("inside blitz EP");
-    blitz::Logger::getClientLogger()->info("inside blitz EP");
+    BLITZ_CORE_INFO("inside blitz EP");
+    BLITZ_WARN("inside blitz EP");
 
 
     blitz::Application* app = blitz::createApplication();

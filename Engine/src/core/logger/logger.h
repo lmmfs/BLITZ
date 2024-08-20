@@ -18,9 +18,16 @@ namespace blitz {
             inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return m_ClientLogger; }
     };
 
-    #define BLITZ_LOG_TRACE(...) Logger::getCoreLogger()->trace(__VA_ARGS__)
-    #define BLITZ_LOG_INFO(...) Logger::getCoreLogger()->info(__VA_ARGS__)
-    #define BLITZ_LOG_WARN(...) Logger::getCoreLogger()->warn(__VA_ARGS__)
-    #define BLITZ_LOG_ERROR(...) Logger::getCoreLogger()->error(__VA_ARGS__)
+    //Core Logger Macros
+    #define BLITZ_CORE_TRACE(...) ::blitz::Logger::getCoreLogger()->trace(__VA_ARGS__)
+    #define BLITZ_CORE_INFO(...) ::blitz::Logger::getCoreLogger()->info(__VA_ARGS__)
+    #define BLITZ_CORE_WARN(...) ::blitz::Logger::getCoreLogger()->warn(__VA_ARGS__)
+    #define BLITZ_CORE_ERROR(...) ::blitz::Logger::getCoreLogger()->error(__VA_ARGS__)
+
+    //Client Logger Macros
+    #define BLITZ_TRACE(...) ::blitz::Logger::getClientLogger()->trace(__VA_ARGS__)
+    #define BLITZ_INFO(...) ::blitz::Logger::getClientLogger()->info(__VA_ARGS__)
+    #define BLITZ_WARN(...) ::blitz::Logger::getClientLogger()->warn(__VA_ARGS__)
+    #define BLITZ_ERROR(...) ::blitz::Logger::getClientLogger()->error(__VA_ARGS__)
     
 }
