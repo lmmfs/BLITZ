@@ -1,6 +1,5 @@
 #pragma once
 
-//#include "../graphics/window.h"
 #include "core.h"
 
 namespace blitz {
@@ -13,6 +12,9 @@ namespace blitz {
         virtual ~Application();
 
         void run();
+
+        // To be defined in client side
+        Application* createApplication();
     
     };
 }

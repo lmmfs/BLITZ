@@ -18,8 +18,6 @@ Sandbox ::~Sandbox ()
 }
 
 
-int main() {
-    Sandbox* box = new Sandbox();
-    box->run();
-    delete box;
+blitz::Application* blitz::createApplication() {
+    return new Sandbox();
 }
