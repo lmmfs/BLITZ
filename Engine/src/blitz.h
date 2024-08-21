@@ -2,9 +2,9 @@
 
 //To use outside of blitz, use in blitz app
 
-#include "core/application.h"
-#include "core/logger/logger.h"
+#include "Blitz/core/application.h"
+#include "Blitz/core/logger/logger.h"
 
 //---- Entry Point ---------------
 //--------------------------------
-#include "core/entryPoint.h"
+#include "Blitz/core/entryPoint.h"

@@ -2,7 +2,7 @@
 
 A 3d game engine for Linux using c++ and opengl
 
-![Logo](B-logo-512.png)
+![Logo](extras/B-logo-512.png)
 
 
 ## Features
