@@ -3,7 +3,7 @@
 #include <string>
 #include <cstring>
 #include <iostream>
-#include "../core/logger/logger.h"
+#include "Blitz/core/logger/logger.h"
 
 namespace blitz {
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../core/core.h"
+#include "Blitz/core/core.h"
 
 #include <string>
 #include <functional>

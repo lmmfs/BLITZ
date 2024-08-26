@@ -1,7 +1,7 @@
 #pragma once
 
 #include <spdlog/spdlog.h>
-#include "../core.h"
+#include "Blitz/core/core.h"
 
 #include <memory>
 
