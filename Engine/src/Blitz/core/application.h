@@ -1,6 +1,8 @@
 #pragma once
 
 #include "core.h"
+#include "Blitz/events/event.h"
+
 
 namespace blitz {
     class ENGINE_API Application {
