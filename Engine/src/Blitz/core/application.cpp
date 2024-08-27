@@ -14,11 +14,17 @@ namespace blitz {
     }
 
     void Application::run() {
-        std::cout << "inside blitz" << std::endl;
-
         WindowResizeEvent e(1200, 720);
-        //BLITZ_CORE_INFO(e);
-        BLITZ_CORE_ERROR("teste");
+        
+
+        if (e.hasCategory(EventCategoryApplication)) {
+            BLITZ_INFO(e);
+        }
+
+        if (e.hasCategory(EventCategoryKeyboard)) {
+            BLITZ_INFO(e);
+        }
+
 
         while (true)
         {

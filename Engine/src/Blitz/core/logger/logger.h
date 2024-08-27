@@ -2,6 +2,7 @@
 
 #include <spdlog/spdlog.h>
 #include "Blitz/core/core.h"
+#include <spdlog/fmt/ostr.h>
 
 #include <memory>
 

@@ -4,6 +4,7 @@
 
 #include <string>
 #include <functional>
+#include <iostream>
 
 namespace blitz {
 
@@ -73,8 +74,20 @@ namespace blitz {
 
     };
 
+    //this didn't seem to work
+    /*
     inline std::ostream& operator<<(std::ostream& os, const Event& e) {
 		return os << e.toString();
 	}
+    */
+
+   //this does, for what i understand it relates
+   //to spdlog/fmt to allow implicit conversion
+   // of types to strings for formatting. 
+   //By defining this function, you are telling fmt 
+   //how to convert Event objects to strings.
+   inline std::string format_as(const Event& e) {
+        return e.toString();
+   }
 
 }
