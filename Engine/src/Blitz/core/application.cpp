@@ -1,8 +1,10 @@
+#include "blpch.h"
 #include "application.h"
-#include <iostream>
 
 #include "logger/logger.h"
 #include "Blitz/events/applicationEvent.h"
+
+#include "Blitz/math/math.h"
 
 namespace blitz {
     Application::Application() {
@@ -15,6 +17,8 @@ namespace blitz {
 
     void Application::run() {
         WindowResizeEvent e(1200, 720);
+
+        Vec2 v(2.0f);
         
 
         if (e.hasCategory(EventCategoryApplication)) {

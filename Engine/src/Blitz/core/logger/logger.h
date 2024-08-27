@@ -4,8 +4,6 @@
 #include "Blitz/core/core.h"
 #include <spdlog/fmt/ostr.h>
 
-#include <memory>
-
 namespace blitz {
     class ENGINE_API Logger
     {

@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "vertexArray.h"
 
 namespace blitz {

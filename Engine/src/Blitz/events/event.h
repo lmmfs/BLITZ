@@ -2,9 +2,7 @@
 
 #include "Blitz/core/core.h"
 
-#include <string>
-#include <functional>
-#include <iostream>
+#include "blpch.h"
 
 namespace blitz {
 

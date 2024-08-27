@@ -1,8 +1,6 @@
 #pragma once
 
 #include "../math.h"
-#include <iostream>
-#include <cstring>
 
 namespace blitz {
     struct Mat4

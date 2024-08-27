@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "buffer.h"
 
 namespace blitz {

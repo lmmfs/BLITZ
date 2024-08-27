@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "texture.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "../utils/stb_image.h"

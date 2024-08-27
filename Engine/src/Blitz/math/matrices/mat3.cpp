@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "mat3.h"
 
 namespace blitz {

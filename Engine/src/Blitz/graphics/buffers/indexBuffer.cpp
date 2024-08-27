@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "indexBuffer.h"
 
 namespace blitz {

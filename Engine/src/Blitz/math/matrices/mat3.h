@@ -2,8 +2,6 @@
 
 #include "../math.h"
 
-#include <iostream>
-#include <cstring>
 
 namespace blitz {
     struct Mat3

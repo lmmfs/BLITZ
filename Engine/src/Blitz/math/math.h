@@ -1,7 +1,6 @@
 #pragma once
 
 #include "vectors/vec4.h"
-#include <cmath>
 
 namespace blitz {
 

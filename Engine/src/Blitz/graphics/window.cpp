@@ -1,3 +1,4 @@
+#include "blpch.h"
 #include "window.h"
 #include "Blitz/core/logger/logger.h"
 

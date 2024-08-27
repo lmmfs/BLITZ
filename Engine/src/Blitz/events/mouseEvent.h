@@ -1,8 +1,6 @@
 #pragma once
 #include "event.h"
 
-#include <sstream>
-
 /*
 Events:
 MousedMovedEvent

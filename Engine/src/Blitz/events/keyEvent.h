@@ -2,7 +2,6 @@
 
 #include "event.h"
 
-#include <sstream>
 
 /*
 Events:

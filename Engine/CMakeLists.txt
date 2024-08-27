@@ -41,6 +41,9 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
 add_library(Engine SHARED ${ENGINE_SOURCE_FILES})
 target_compile_definitions(Engine PRIVATE ENGINE_EXPORTS)
 
+# Add precompiled header
+target_precompile_headers(Engine PRIVATE src/blpch.h)
+
 # Link libraries
 #target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
 target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
