@@ -9,10 +9,7 @@ namespace blitz {
 
 int main(int argc, char** argv) {
     blitz::Logger::init();
-    BLITZ_CORE_INFO("inside blitz EP");
-    BLITZ_WARN("inside blitz EP");
-    int a {0};
-    BLITZ_ERROR("this is an error {0}", a);
+    BLITZ_CORE_INFO("says hell");
 
 
     blitz::Application* app = blitz::createApplication();

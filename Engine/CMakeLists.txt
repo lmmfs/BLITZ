@@ -30,6 +30,7 @@ target_compile_options(glad PRIVATE -fPIC)
 set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
 # Include directories
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include 
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include

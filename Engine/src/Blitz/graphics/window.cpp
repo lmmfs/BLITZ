@@ -1,5 +1,5 @@
 #include "window.h"
-#include "../core/logger/logger.h"
+#include "Blitz/core/logger/logger.h"
 
 
 namespace blitz {

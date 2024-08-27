@@ -1,7 +1,7 @@
 #include "texture.h"
 #define STB_IMAGE_IMPLEMENTATION
 #include "../utils/stb_image.h"
-#include "../core/logger/logger.h"
+#include "Blitz/core/logger/logger.h"
 
 namespace blitz {
     Texture::Texture(const std::string& path) 
