@@ -38,10 +38,10 @@ namespace blitz {
 
     bool Window::init() {
         if (!glfwInit()) {
-            //BLITZ_LOG_ERROR("Failed to initialize GLFW");
+            BLITZ_CORE_ERROR("Failed to initialize GLFW");
             return false;
         } else {
-            //BLITZ_LOG_INFO("Successfully initialized GLFW");
+            BLITZ_CORE_INFO("Successfully initialized GLFW");
         }
 
         // Set GLFW to use OpenGL 3.3 and core profile
@@ -66,7 +66,7 @@ namespace blitz {
 
         // Load GLAD
         if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-            //BLITZ_LOG_ERROR("Failed to initialize GLAD");
+            BLITZ_CORE_ERROR("Failed to initialize GLAD");
             return false;
         }
 
@@ -80,7 +80,7 @@ namespace blitz {
     void Window::update() {
         GLenum error = glGetError();
         if (error != GL_NO_ERROR) {
-            //BLITZ_LOG_ERROR("OPENGL ERROR: {}", error);
+            BLITZ_CORE_ERROR("OPENGL ERROR: {}", error);
         }
 
         glfwPollEvents();
