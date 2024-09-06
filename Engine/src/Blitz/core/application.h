@@ -2,7 +2,7 @@
 
 #include "core.h"
 #include "Blitz/events/event.h"
-#include "Blitz/graphics/window.h"
+#include "Blitz/core/window.h"
 
 
 namespace blitz {
