@@ -7,7 +7,7 @@
 
 
 namespace blitz {
-    
+    //Window class that uses OpenGl
     class OpenWindow : public Window {
         private:
             struct WindowData {
