@@ -34,11 +34,11 @@ namespace blitz {
     };
 
     class ENGINE_API WindowCloseEvent : public Event {
-        
-        WindowCloseEvent() = default;
+        public:
+            WindowCloseEvent() = default;
 
-        EVENT_CLASS_TYPE(WindowClose)
-		EVENT_CLASS_CATEGORY(EventCategoryApplication)
+            EVENT_CLASS_TYPE(WindowClose)
+		    EVENT_CLASS_CATEGORY(EventCategoryApplication)
     };
 
     class AppTickEvent : public Event {

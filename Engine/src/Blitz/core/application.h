@@ -18,6 +18,8 @@ namespace blitz {
 
         void run();
 
+        void onEvent(Event& event);
+
         // To be defined in client side
         Application* createApplication();
     

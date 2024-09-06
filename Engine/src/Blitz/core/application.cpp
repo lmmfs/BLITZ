@@ -9,8 +9,12 @@
 #include <GLFW/glfw3.h>
 
 namespace blitz {
+
+#define  BIND_EVENT_FUNC(x) std::bind(&x, this, std::placeholders::_1)
+
     Application::Application() {
         m_Window = std::unique_ptr<Window>(Window::create());
+        m_Window->setEventCallback(BIND_EVENT_FUNC(Application::onEvent));
         m_Running = true;
     }
 
@@ -25,6 +29,10 @@ namespace blitz {
             glClear(GL_COLOR_BUFFER_BIT);
             m_Window->onUpdate();
         }
+    }
+
+    void Application::onEvent(Event& event) {
+        BLITZ_CORE_INFO("Event: {0}", event);
     }
 
 }

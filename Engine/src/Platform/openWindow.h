@@ -17,7 +17,7 @@ namespace blitz {
 
                 bool vSync;
 
-                EventCallbackFn EventCallback;
+                EventCallbackFn eventCallback;
 		    };
 
             WindowData m_Data;
@@ -36,7 +36,7 @@ namespace blitz {
             void onUpdate() override;
 
             // Window attributes
-		    void setEventCallback(const EventCallbackFn& callback) override { m_Data.EventCallback = callback; }
+		    void setEventCallback(const EventCallbackFn& callback) override { m_Data.eventCallback = callback; }
 		    void setVSync(bool enabled) override;
 		    bool isVSync() const override;
 
