@@ -6,9 +6,13 @@
 
 #include "Blitz/math/math.h"
 
+
+#include <GLFW/glfw3.h>
+
 namespace blitz {
     Application::Application() {
-        //m_Window = Window("Blitz", 960, 540);
+        m_Window = std::unique_ptr<Window>(new Window("Blitz", 960, 540));
+        m_Running = true;
     }
 
     Application::~Application() {
@@ -30,9 +34,11 @@ namespace blitz {
         }
 
 
-        while (true)
+        while (m_Running)
         {
-            /* code */
+            glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT);
+            m_Window->update();
         }
     }
 

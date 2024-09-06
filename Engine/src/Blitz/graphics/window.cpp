@@ -11,7 +11,7 @@ namespace blitz {
     void cursor_position_callback(GLFWwindow* window, double xpos, double ypos);
 
     Window::Window() {
-        Window("Empty", 500, 500);
+        Window("BLITZ ENGINE", 500, 500);
     }
 
     Window::Window(const char *name, const int& width, const int& height) {

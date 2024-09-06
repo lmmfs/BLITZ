@@ -2,13 +2,16 @@
 
 #include "core.h"
 #include "Blitz/events/event.h"
+#include "Blitz/graphics/window.h"
 
 
 namespace blitz {
     class ENGINE_API Application {
     
     private:
-        //Window m_Window;
+        std::unique_ptr<Window> m_Window;
+        bool m_Running;
+
     public:
         Application();
         virtual ~Application();
