@@ -3,6 +3,7 @@
 #include "core.h"
 #include "Blitz/events/event.h"
 #include "Blitz/core/window.h"
+#include "Blitz/events/applicationEvent.h"
 
 
 namespace blitz {
@@ -23,5 +24,9 @@ namespace blitz {
         // To be defined in client side
         Application* createApplication();
     
+    private:
+        bool onWindowClose(WindowCloseEvent& e);
+    
     };
+    
 }

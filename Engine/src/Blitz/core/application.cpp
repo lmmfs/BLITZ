@@ -1,8 +1,6 @@
 #include "blpch.h"
 #include "application.h"
 
-#include "Blitz/events/applicationEvent.h"
-
 #include "Blitz/math/math.h"
 
 
@@ -32,7 +30,15 @@ namespace blitz {
     }
 
     void Application::onEvent(Event& event) {
+        EventDispatcher dispatcher(event);
+        dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FUNC(Application::onWindowClose));
+
         BLITZ_CORE_INFO("Event: {0}", event);
+    }
+
+    bool Application::onWindowClose(WindowCloseEvent& e) {
+        m_Running = false;
+        return true;
     }
 
 }
