@@ -19,7 +19,7 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "GLFW lib only")
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "GLFW lib only")
 set(GLFW_BUILD_WAYLAND OFF CACHE BOOL "Do not use Wayland backend")
 set(GLFW_BUILD_X11 ON CACHE BOOL "Build X11 backend")
-add_subdirectory(vendor/glfw)
+add_subdirectory(vendor/GLFW)
 
 # Add GLAD
 add_library(glad STATIC vendor/glad/src/glad.c)
@@ -32,7 +32,7 @@ set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
-                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw/include 
+                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include 
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include)
 

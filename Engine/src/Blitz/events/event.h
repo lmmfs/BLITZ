@@ -62,8 +62,8 @@ namespace blitz {
             EventDispatcher(Event& event) : m_Event(event) {}
 
             template<typename T>
-            bool Dispatch(EventFn<T> func) {
-                if (m_Event.getEventType() == T::GetStaticType()) {
+            bool dispatch(EventFn<T> func) {
+                if (m_Event.getEventType() == T::getStaticType()) {
                     m_Event.m_Handled = func(*(T*)&m_Event);
                     return true;
                 }
