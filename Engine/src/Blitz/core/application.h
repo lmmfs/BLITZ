@@ -4,6 +4,7 @@
 #include "Blitz/events/event.h"
 #include "Blitz/core/window.h"
 #include "Blitz/events/applicationEvent.h"
+#include "Blitz/layers/layerStack.h"
 
 
 namespace blitz {
@@ -21,11 +22,15 @@ namespace blitz {
 
         void onEvent(Event& event);
 
+        void pushLayer(Layer* layer);
+        void pushOverlay(Layer* layer);
+
         // To be defined in client side
         Application* createApplication();
     
     private:
         bool onWindowClose(WindowCloseEvent& e);
+        LayerStack m_LayerStack;
     
     };
     

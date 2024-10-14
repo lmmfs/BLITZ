@@ -46,9 +46,9 @@ namespace blitz {
             inline bool hasCategory(EventCategory catgegory) {
                 return getCategoryFlags() & catgegory;
             }
-        
-        protected:
+
             bool m_Handled = false;
+            
     };
 
     class EventDispatcher {

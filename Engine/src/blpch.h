@@ -7,11 +7,13 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <sstream>
+#include <array>
 
 //
 #include <functional>
 #include <iostream>
 #include <memory>
+#include <algorithm>
 
 //
 #include <cmath>

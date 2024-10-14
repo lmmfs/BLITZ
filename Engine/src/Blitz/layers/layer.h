@@ -14,10 +14,10 @@ namespace blitz {
             Layer(const std::string& name = "Layer");
             virtual ~Layer();
 
-            virtual void onAttach();
-            virtual void onDeattach();
-            virtual void onUpdate();
-            virtual void onEvent(Event& event);
+            virtual void onAttach() {}
+            virtual void onDeattach() {}
+            virtual void onUpdate() {}
+            virtual void onEvent(Event& event) {}
 
             inline const std::string& getName() const { return m_LayerName; }
     };
