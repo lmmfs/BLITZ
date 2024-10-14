@@ -1,21 +1,36 @@
 #include <blitz.h>
 
-
-class Sandbox : public blitz::Application
-{
-
+class ExampleLayer : public blitz::Layer {
 public:
-    Sandbox (/* args */);
-    ~Sandbox ();
+    ExampleLayer () : Layer("Example") {
+
+    }
+
+    ~ExampleLayer() {
+
+    }
+
+    void onUpdate() override {
+        BLITZ_INFO("ExampleLayer::Update");
+    }
+
+    void onEvent(blitz::Event& event) override {
+        BLITZ_TRACE(event);
+    }
+
 };
 
-Sandbox ::Sandbox (/* args */)
-{
-}
+class Sandbox : public blitz::Application {
 
-Sandbox ::~Sandbox ()
-{
-}
+public:
+    Sandbox () {
+        pushLayer(new ExampleLayer());
+    }
+
+    ~Sandbox () {
+
+    }
+};
 
 
 blitz::Application* blitz::createApplication() {
