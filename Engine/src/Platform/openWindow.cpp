@@ -5,6 +5,9 @@
 #include "Blitz/events/keyEvent.h"
 #include "Blitz/events/mouseEvent.h"
 
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 namespace blitz {
 
     static void GLFWErrorCallback(int error, const char* description) {

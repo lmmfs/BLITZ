@@ -1,10 +1,7 @@
 #pragma once
 
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
 #include "Blitz/core/window.h"
-#include "Blitz/events/event.h"
-
+#include <GLFW/glfw3.h>
 
 namespace blitz {
     //Window class that uses OpenGl

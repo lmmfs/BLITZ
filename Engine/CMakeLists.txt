@@ -19,6 +19,7 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "GLFW lib only")
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "GLFW lib only")
 set(GLFW_BUILD_WAYLAND OFF CACHE BOOL "Do not use Wayland backend")
 set(GLFW_BUILD_X11 ON CACHE BOOL "Build X11 backend")
+
 add_subdirectory(vendor/GLFW)
 
 # Add GLAD
@@ -39,7 +40,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}
 # Create a shared library
 # Define the ENGINE_EXPORTS macro for the engine target
 add_library(Engine SHARED ${ENGINE_SOURCE_FILES})
-target_compile_definitions(Engine PRIVATE ENGINE_EXPORTS)
+target_compile_definitions(Engine PRIVATE ENGINE_EXPORTS GLFW_INCLUDE_NONE)
 
 # Add precompiled header
 target_precompile_headers(Engine PRIVATE src/blpch.h)
