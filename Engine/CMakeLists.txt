@@ -39,6 +39,9 @@ file(GLOB IMGUI_SRC
 
 add_library(imgui STATIC ${IMGUI_SRC})
 
+# Ensure ImGui is compiled with -fPIC for use in shared libraries
+target_compile_options(imgui PRIVATE -fPIC)
+
 target_include_directories(imgui PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/backends

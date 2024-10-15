@@ -27,10 +27,15 @@ namespace blitz {
 
         // To be defined in client side
         Application* createApplication();
+
+        inline Window& getWindow() { return *m_Window; }
+        inline static Application& getInstance() { return *s_Instance; }
     
     private:
         bool onWindowClose(WindowCloseEvent& e);
         LayerStack m_LayerStack;
+
+        static Application* s_Instance;
     
     };
     

@@ -25,6 +25,7 @@ class Sandbox : public blitz::Application {
 public:
     Sandbox () {
         pushLayer(new ExampleLayer());
+        pushOverlay(new blitz::ImGuiLayer());
     }
 
     ~Sandbox () {
