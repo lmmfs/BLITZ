@@ -30,12 +30,27 @@ target_compile_options(glad PRIVATE -fPIC)
 # Ensure glad is compiled with -fPIC
 set_target_properties(glad PROPERTIES POSITION_INDEPENDENT_CODE ON)
 
+# Add ImGui
+file(GLOB IMGUI_SRC
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/backends/imgui_impl_glfw.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/backends/imgui_impl_opengl3.cpp
+)
+
+add_library(imgui STATIC ${IMGUI_SRC})
+
+target_include_directories(imgui PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui
+    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui/backends
+)
+
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/GLFW/include 
                     ${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad/include
-                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include)
+                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/spdlog/include
+                    ${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui)
 
 # Create a shared library
 # Define the ENGINE_EXPORTS macro for the engine target
@@ -46,8 +61,7 @@ target_compile_definitions(Engine PRIVATE ENGINE_EXPORTS GLFW_INCLUDE_NONE)
 target_precompile_headers(Engine PRIVATE src/blpch.h)
 
 # Link libraries
-#target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
-target_link_libraries(Engine glfw glad spdlog ${CMAKE_DL_LIBS})
+target_link_libraries(Engine glfw glad spdlog imgui ${CMAKE_DL_LIBS})
 
 # Find OpenGL
 find_package(OpenGL REQUIRED)
